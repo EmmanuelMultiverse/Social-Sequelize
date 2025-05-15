@@ -5,9 +5,9 @@ const postSeed = require("./seed/posts.json");
 const commentSeed = require("./seed/comments.json");
 const likeSeed = require("./seed/likes.json");
 
-const { db } = require('./db/connection.js');
+const { db } = require("./db/connection.js");
 
-describe('Social Media Models and Associations Test', () => {
+describe("Social Media Models and Associations Test", () => {
   beforeAll(async () => {
     await db.sync({ force: true });
     await User.bulkCreate(userSeed);
@@ -17,8 +17,8 @@ describe('Social Media Models and Associations Test', () => {
     await Like.bulkCreate(likeSeed);
   });
 
-  describe('User and Profile Associations', () => {
-    test('User can have one Profile and Profile belongs to User', async () => {
+  describe("User and Profile Associations", () => {
+    test("User can have one Profile and Profile belongs to User", async () => {
       const user = await User.findByPk(1);
       const profile = await Profile.findByPk(1);
 
@@ -26,107 +26,107 @@ describe('Social Media Models and Associations Test', () => {
       await profile.setUser(user);
 
       const profileToUser = await user.getProfile();
-      console.log(profileToUser.dataValues)
-      expect(profileToUser.dataValues).toEqual(expect.objectContaining({
-      "bio": "I'm a software engineer",
-      "profilePicture": "https://example.com/profile1.jpg",
-      "birthday": "1990-06-15"
-    }));
+      const userToProfile = await profile.getUser();
+      expect(profileToUser.dataValues).toEqual(
+        expect.objectContaining({
+          bio: "I'm a software engineer",
+          profilePicture: "https://example.com/profile1.jpg",
+          birthday: "1990-06-15",
+        }),
+      );
+
+      expect(userToProfile.dataValues).toEqual(
+        expect.objectContaining({
+          username: "john_doe",
+          email: "john_doe@example.com",
+        }),
+      );
     });
   });
 
-  describe('User and Post Associations', () => {
-    test('User can have many Posts and Post belongs to User', async () => {
-      const user = await User.findOne({ where: { name: userSeed[1].name } });
-      const posts = await Post.findAll({ where: { userId: user.id } });
+  describe("User and Post Associations", () => {
+    test("User can have many Posts and Post belongs to User", async () => {
+      const user = await User.findByPk(1);
+      const post = await Post.findByPk(1);
+      const postTwo = await Post.findByPk(2);
 
-      expect(user).toBeDefined();
-      expect(posts.length).toBeGreaterThan(0);
-      posts.forEach(post => {
-        expect(post.userId).toBe(user.id);
+      //   await user.addPost(post);
+      //   await user.addPost(postTwo);
+
+      await post.setUser(user);
+      await postTwo.setUser(user);
+
+      const posts = await user.getPosts();
+      console.log(posts);
+      expect(posts[0].dataValues).toMatchObject({
+        title: "Hiking in Yosemite",
+        body: "I had an amazing time hiking in Yosemite National Park!",
+        createdAt: "2022-03-15T10:30:00.000Z",
       });
-
-      const userPosts = await user.getPosts();
-      expect(userPosts.length).toBe(posts.length);
-      userPosts.forEach((post, index) => {
-        expect(post).toEqual(expect.objectContaining({
-          title: postSeed[index].title,
-          content: postSeed[index].content,
-          userId: user.id,
-        }));
+      expect(posts[1].dataValues).toMatchObject({
+        title: "London Street Photography",
+        body: "Here are some of my recent street photography shots from London.",
+        createdAt: "2022-03-18T14:15:00.000Z",
       });
-
-      const postUser = await Post.findOne({ where: { title: postSeed[0].title } });
-      const author = await postUser.getUser();
-      expect(author).toEqual(expect.objectContaining({
-        name: userSeed[1].name,
-        password: userSeed[1].password,
-      }));
     });
   });
 
-  describe('Post and Comment Associations', () => {
-    test('Post can have many Comments and Comment belongs to Post', async () => {
-      const post = await Post.findOne({ where: { title: postSeed[0].title } });
-      const comments = await Comment.findAll({ where: { postId: post.id } });
+  describe("Post and Comment Association", () => {
+    test("Should have one to many association between post and comment", async () => {
+      const post = await Post.findByPk(1);
+      const comment = await Comment.findByPk(1);
+      const commentTwo = await Comment.findByPk(2);
 
-      expect(post).toBeDefined();
-      expect(comments.length).toBeGreaterThan(0);
-      comments.forEach(comment => {
-        expect(comment.postId).toBe(post.id);
+      await post.addComment(comment);
+      await post.addComment(commentTwo);
+
+      const comments = await post.getComments();
+      console.log(comments);
+      expect(comments[0].dataValues).toMatchObject({
+        body: "This is a great post!",
+        createdAt: "2022-01-01T12:00:00Z",
       });
-
-      const postComments = await post.getComments();
-      expect(postComments.length).toBe(comments.length);
-      postComments.forEach((comment, index) => {
-        expect(comment).toEqual(expect.objectContaining({
-          text: commentSeed[index].text,
-          postId: post.id,
-        }));
+      expect(comments[1].dataValues).toMatchObject({
+        body: "I completely agree with you.",
+        createdAt: "2022-01-02T08:30:00Z",
       });
-
-      const commentPost = await Comment.findOne({ where: { text: commentSeed[0].text } });
-      const parentPost = await commentPost.getPost();
-      expect(parentPost).toEqual(expect.objectContaining({
-        title: postSeed[0].title,
-        content: postSeed[0].content,
-      }));
     });
   });
 
-  describe('User and Like Associations (Many-to-Many)', () => {
-    test('User can belong to many Likes and Like can belong to many Users', async () => {
-      const user1 = await User.findOne({ where: { name: userSeed[0].name } });
-      const user2 = await User.findOne({ where: { name: userSeed[1].name } });
-      const like1 = await Like.findOne({ where: { name: likeSeed[0].name } });
-      const like2 = await Like.findOne({ where: { name: likeSeed[1].name } });
+  describe("Testing User and Like Associations", () => {
+    test("Should have many-to-many user association between User and Like", async () => {
+      const user = await User.findByPk(1);
+      const userTwo = await User.findByPk(2);
 
-      expect(user1).toBeDefined();
-      expect(user2).toBeDefined();
-      expect(like1).toBeDefined();
-      expect(like2).toBeDefined();
+      const like = await Like.findByPk(1);
+      const likeTwo = await Like.findByPk(2);
 
-      await user1.addLike(like1);
-      await user1.addLike(like2);
-      await user2.addLike(like1);
+      await user.addLike(like);
+      await user.addLike(likeTwo);
 
-      const user1Likes = await user1.getLikes();
-      expect(user1Likes.length).toBe(2);
-      expect(user1Likes.some(like => like.name === likeSeed[0].name)).toBe(true);
-      expect(user1Likes.some(like => like.name === likeSeed[1].name)).toBe(true);
+      await like.addUser(userTwo);
+      await likeTwo.addUser(userTwo);
 
-      const user2Likes = await user2.getLikes();
-      expect(user2Likes.length).toBe(1);
-      expect(user2Likes.some(like => like.name === likeSeed[0].name)).toBe(true);
+      const likeUsers = await like.getUsers();
+      const userLikes = await user.getLikes();
 
-      const like1Users = await like1.getUsers();
-      expect(like1Users.length).toBe(2);
-      expect(like1Users.some(user => user.name === userSeed[0].name)).toBe(true);
-      expect(like1Users.some(user => user.name === userSeed[1].name)).toBe(true);
+      expect(userLikes[0].dataValues).toMatchObject({
+        reactionType: "👍",
+      });
 
-      const like2Users = await like2.getUsers();
-      expect(like2Users.length).toBe(1);
-      expect(like2Users.some(user => user.name === userSeed[0].name)).toBe(true);
+      expect(userLikes[1].dataValues).toMatchObject({
+        reactionType: "❤️",
+      });
+
+      expect(likeUsers[0].dataValues).toMatchObject({
+        username: "john_doe",
+        email: "john_doe@example.com",
+      });
+    });
+
+    expect(likeUsers[1].dataValues).toMatchObject({
+      username: "jane_doe",
+      email: "jane_doe@example.com",
     });
   });
 });

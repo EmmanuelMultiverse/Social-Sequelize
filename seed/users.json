@@ -1,23 +1,22 @@
 [
-    {
-      "username": "john_doe",
-      "email": "john_doe@example.com"
-    },
-    {
-      "username": "jane_doe",
-      "email": "jane_doe@example.com"
-    },
-    {
-      "username": "bob_smith",
-      "email": "bob_smith@example.com"
-    },
-    {
-      "username": "alice_wonderland",
-      "email": "alice_wonderland@example.com"
-    },
-    {
-      "username": "tom_jones",
-      "email": "tom_jones@example.com"
-    }
-  ]
-  
+  {
+    "username": "john_doe",
+    "email": "john_doe@example.com"
+  },
+  {
+    "username": "jane_doe",
+    "email": "jane_doe@example.com"
+  },
+  {
+    "username": "bob_smith",
+    "email": "bob_smith@example.com"
+  },
+  {
+    "username": "alice_wonderland",
+    "email": "alice_wonderland@example.com"
+  },
+  {
+    "username": "tom_jones",
+    "email": "tom_jones@example.com"
+  }
+]

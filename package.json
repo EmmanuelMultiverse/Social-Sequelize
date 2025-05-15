@@ -1,27 +1,28 @@
 {
-	"name": "social-sequelize",
-	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
-	"scripts": {
-		"test": "jest --watch --runInBand"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/MultiverseLearningProducts/Social-Sequelize.git"
-	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/MultiverseLearningProducts/Social-Sequelize/issues"
-	},
-	"homepage": "https://github.com/MultiverseLearningProducts/Social-Sequelize#readme",
-	"dependencies": {
-		"sequelize": "^6.30.0",
-		"sqlite3": "^5.1.6"
-	},
-	"devDependencies": {
-		"jest": "^29.5.0"
-	}
+  "name": "social-sequelize",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage --watch --runInBand"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MultiverseLearningProducts/Social-Sequelize.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MultiverseLearningProducts/Social-Sequelize/issues"
+  },
+  "homepage": "https://github.com/MultiverseLearningProducts/Social-Sequelize#readme",
+  "dependencies": {
+    "prettier": "^3.5.3",
+    "sequelize": "^6.30.0",
+    "sqlite3": "^5.1.6"
+  },
+  "devDependencies": {
+    "jest": "^29.5.0"
+  }
 }

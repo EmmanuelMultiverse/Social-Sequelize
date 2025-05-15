@@ -1,27 +1,27 @@
 [
-    {
-      "bio": "I'm a software engineer",
-      "profilePicture": "https://example.com/profile1.jpg",
-      "birthday": "1990-06-15"
-    },
-    {
-      "bio": "I love to travel",
-      "profilePicture": "https://example.com/profile2.jpg",
-      "birthday": "1985-09-28"
-    },
-    {
-      "bio": "I'm a foodie",
-      "profilePicture": "https://example.com/profile3.jpg",
-      "birthday": "1992-01-10"
-    },
-    {
-      "bio": "I'm a fitness enthusiast",
-      "profilePicture": "https://example.com/profile4.jpg",
-      "birthday": "1988-11-22"
-    },
-    {
-      "bio": "I'm a musician",
-      "profilePicture": "https://example.com/profile5.jpg",
-      "birthday": "1995-03-01"
-    }
-]  
+  {
+    "bio": "I'm a software engineer",
+    "profilePicture": "https://example.com/profile1.jpg",
+    "birthday": "1990-06-15"
+  },
+  {
+    "bio": "I love to travel",
+    "profilePicture": "https://example.com/profile2.jpg",
+    "birthday": "1985-09-28"
+  },
+  {
+    "bio": "I'm a foodie",
+    "profilePicture": "https://example.com/profile3.jpg",
+    "birthday": "1992-01-10"
+  },
+  {
+    "bio": "I'm a fitness enthusiast",
+    "profilePicture": "https://example.com/profile4.jpg",
+    "birthday": "1988-11-22"
+  },
+  {
+    "bio": "I'm a musician",
+    "profilePicture": "https://example.com/profile5.jpg",
+    "birthday": "1995-03-01"
+  }
+]

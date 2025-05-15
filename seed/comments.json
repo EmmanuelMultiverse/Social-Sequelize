@@ -1,22 +1,22 @@
 [
-    {
-      "body": "This is a great post!",
-      "createdAt": "2022-01-01T12:00:00Z"
-    },
-    {
-      "body": "I completely agree with you.",
-      "createdAt": "2022-01-02T08:30:00Z"
-    },
-    {
-      "body": "Can you explain this point further?",
-      "createdAt": "2022-01-02T10:45:00Z"
-    },
-    {
-      "body": "Thanks for sharing your thoughts.",
-      "createdAt": "2022-01-03T15:20:00Z"
-    },
-    {
-      "body": "I have a different opinion on this topic.",
-      "createdAt": "2022-01-04T09:10:00Z"
-    }
-]  
+  {
+    "body": "This is a great post!",
+    "createdAt": "2022-01-01T12:00:00Z"
+  },
+  {
+    "body": "I completely agree with you.",
+    "createdAt": "2022-01-02T08:30:00Z"
+  },
+  {
+    "body": "Can you explain this point further?",
+    "createdAt": "2022-01-02T10:45:00Z"
+  },
+  {
+    "body": "Thanks for sharing your thoughts.",
+    "createdAt": "2022-01-03T15:20:00Z"
+  },
+  {
+    "body": "I have a different opinion on this topic.",
+    "createdAt": "2022-01-04T09:10:00Z"
+  }
+]

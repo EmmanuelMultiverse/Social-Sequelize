@@ -1,27 +1,27 @@
 [
-    {
-      "title": "Hiking in Yosemite",
-      "body": "I had an amazing time hiking in Yosemite National Park!",
-      "createdAt": "2022-03-15T10:30:00.000Z"
-    },
-    {
-      "title": "London Street Photography",
-      "body": "Here are some of my recent street photography shots from London.",
-      "createdAt": "2022-03-18T14:15:00.000Z"
-    },
-    {
-      "title": "New JavaScript Framework",
-      "body": "I'm excited to announce the release of our new JavaScript framework!",
-      "createdAt": "2022-03-21T09:00:00.000Z"
-    },
-    {
-      "title": "Harvard Yard in the Spring",
-      "body": "Spring is finally here! Here's a shot of Harvard Yard.",
-      "createdAt": "2022-03-25T11:45:00.000Z"
-    },
-    {
-      "title": "New Song Release",
-      "body": "Check out my latest song on Spotify!",
-      "createdAt": "2022-03-27T16:20:00.000Z"
-    }]
-  
+  {
+    "title": "Hiking in Yosemite",
+    "body": "I had an amazing time hiking in Yosemite National Park!",
+    "createdAt": "2022-03-15T10:30:00.000Z"
+  },
+  {
+    "title": "London Street Photography",
+    "body": "Here are some of my recent street photography shots from London.",
+    "createdAt": "2022-03-18T14:15:00.000Z"
+  },
+  {
+    "title": "New JavaScript Framework",
+    "body": "I'm excited to announce the release of our new JavaScript framework!",
+    "createdAt": "2022-03-21T09:00:00.000Z"
+  },
+  {
+    "title": "Harvard Yard in the Spring",
+    "body": "Spring is finally here! Here's a shot of Harvard Yard.",
+    "createdAt": "2022-03-25T11:45:00.000Z"
+  },
+  {
+    "title": "New Song Release",
+    "body": "Check out my latest song on Spotify!",
+    "createdAt": "2022-03-27T16:20:00.000Z"
+  }
+]
